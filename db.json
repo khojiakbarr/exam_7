@@ -5,6 +5,12 @@
       "name": "Company 1",
       "description": "Company 1 description",
       "year": "2024"
+    },
+    {
+      "id": "ff25",
+      "name": "Imcon",
+      "year": "2024",
+      "description": "owa gap"
     }
   ],
   "jobs": [
@@ -16,6 +22,15 @@
       "salary": "1000",
       "location": "New York",
       "salaryType": "hourly"
+    },
+    {
+      "id": "62ca",
+      "title": "DevOps",
+      "salary": "12333",
+      "location": "New York",
+      "companyID": "ff25",
+      "salaryType": "Mounthly",
+      "description": "hfkjashfdlkas"
     }
   ]
 }

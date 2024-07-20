@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function MyCard({ job }) {
   const { title, id, salary, description, location, salaryType } = job || {};
   return (
-    <Card className="max-w-sm">
+    <Card className="w-[300px]">
       <h2 className="text-gray-900 dark:text-white font-bold">{title}</h2>
       <div className="flex items-end gap-[10px]">
         <h2 className="text-gray-900 dark:text-white text-xl font-medium  ">

@@ -1,27 +1,69 @@
-import { Button, Checkbox, Label, Select, TextInput } from "flowbite-react";
+import { Button, Select, TextInput } from "flowbite-react";
+import { useGetCompanyQuery } from "../store/APiSlice/CompaniyApi";
+import { useForm } from "react-hook-form";
+import { useAddJobsMutation } from "../store/APiSlice/JobApi";
 
 export default function AddJobs() {
+  const { data: companies } = useGetCompanyQuery();
+  const { handleSubmit, register, reset } = useForm();
+  const [addJob] = useAddJobsMutation();
+
+  const postData = (data) => {
+    console.log(data);
+    addJob({
+      ...data,
+    });
+    reset();
+  };
+
   return (
     <div className="flex justify-center items-center w-full h-full flex-col">
       <h1 className="text-gray-900 dark:text-white text-2xl mb-[10px] font-bold">
         Jobs
       </h1>
-      <form className="flex w-[400px] flex-col gap-4">
+      <form
+        onSubmit={handleSubmit((data) => postData(data))}
+        className="flex w-[400px] flex-col gap-4"
+      >
         <div>
-          <TextInput type="text" placeholder="Title" required />
+          <TextInput
+            type="text"
+            placeholder="Title"
+            required
+            {...register("title")}
+          />
         </div>
         <div>
-          <TextInput type="number" required placeholder="Salary" />
+          <TextInput
+            type="number"
+            required
+            placeholder="Salary"
+            {...register("salary")}
+          />
         </div>{" "}
         <div>
-          <TextInput type="text" required placeholder="location" />
+          <TextInput
+            type="text"
+            required
+            placeholder="Location"
+            {...register("location")}
+          />
         </div>
-        <Select>
-          <option disabled value="null">
-            Company null
-          </option>
+        <Select required {...register("companyID")}>
+          {companies?.map((company) => (
+            <option key={company.id} value={company.id}>
+              {company.name}
+            </option>
+          ))}
+        </Select>
+        <Select required {...register("salaryType")}>
+          <option value="Hourly">Hourly</option>
+          <option value="Mounthly">Mounthly</option>
+          <option value="Annualy">Annualy</option>
         </Select>
         <textarea
+          required
+          {...register("description")}
           className="block w-full border disabled:cursor-not-allowed disabled:opacity-50 border-gray-300 bg-gray-50 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5 text-sm rounded-lg"
           name="description"
           placeholder="Description"
