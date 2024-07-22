@@ -13,7 +13,7 @@ export default function AddCompany() {
   return (
     <div className="flex justify-center items-center w-full h-full flex-col">
       <h1 className="text-gray-900 dark:text-white  text-2xl mb-[10px] font-bold">
-        Company
+        Add Company
       </h1>
       <form
         onSubmit={handleSubmit((data) => postData(data))}

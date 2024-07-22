@@ -1,36 +1,21 @@
 {
   "companies": [
     {
-      "id": "uhdkjs",
-      "name": "Company 1",
-      "description": "Company 1 description",
-      "year": "2024"
-    },
-    {
-      "id": "ff25",
-      "name": "Imcon",
-      "year": "2024",
-      "description": "owa gap"
+      "id": "b7b1",
+      "name": "IMcon",
+      "year": "2023",
+      "description": "lorem\n"
     }
   ],
   "jobs": [
     {
-      "id": "sdhs",
-      "title": "Frontent",
-      "description": " description",
-      "companyID": "uhdkjs",
-      "salary": "1000",
+      "id": "0509",
+      "title": "DEVops",
+      "salary": "231231",
       "location": "New York",
-      "salaryType": "hourly"
-    },
-    {
-      "id": "62ca",
-      "title": "DevOps",
-      "salary": "12333",
-      "location": "New York",
-      "companyID": "ff25",
+      "companyID": "b7b1",
       "salaryType": "Mounthly",
-      "description": "hfkjashfdlkas"
+      "description": "sfasfasfdasd"
     }
   ]
 }

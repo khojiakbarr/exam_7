@@ -4,11 +4,14 @@ import { URL } from "../../URL";
 const JobApi = createApi({
   reducerPath: "jobApi",
   baseQuery: fetchBaseQuery({ baseUrl: URL }),
+  tagTypes: ["jobs"],
   endpoints: (builder) => ({
     getJobs: builder.query({
       query: () => `/jobs`,
       providesTags: (result) =>
-        result ? result.map(({ id }) => ({ type: "companies", id })) : [],
+        result
+          ? [...result.map(({ id }) => ({ type: "jobs", id })), "jobs"]
+          : ["jobs"],
     }),
     addJobs: builder.mutation({
       query: (job) => ({
@@ -16,7 +19,7 @@ const JobApi = createApi({
         method: "POST",
         body: job,
       }),
-      invalidatesTags: (result, error, { job }) => [{ type: "JobApi", job }],
+      invalidatesTags: (result, error, { id }) => [{ type: "jobs", id }],
     }),
   }),
 });

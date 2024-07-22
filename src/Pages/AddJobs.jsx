@@ -19,7 +19,7 @@ export default function AddJobs() {
   return (
     <div className="flex justify-center items-center w-full h-full flex-col">
       <h1 className="text-gray-900 dark:text-white text-2xl mb-[10px] font-bold">
-        Jobs
+       Add Jobs
       </h1>
       <form
         onSubmit={handleSubmit((data) => postData(data))}

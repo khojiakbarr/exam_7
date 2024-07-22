@@ -9,7 +9,12 @@ const CompanyApi = createApi({
     getCompany: builder.query({
       query: () => "/companies",
       providesTags: (result) =>
-        result ? result.map(({ id }) => ({ type: "companies", id })) : [],
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: "companies", id })),
+              "companies",
+            ]
+          : ["companies"],
     }),
     addCompany: builder.mutation({
       query: (company) => ({
@@ -17,9 +22,7 @@ const CompanyApi = createApi({
         method: "POST",
         body: company,
       }),
-      invalidatesTags: (result, error, { company }) => [
-        { type: "CompanyApi", company },
-      ],
+      invalidatesTags: (result, error, { id }) => [{ type: "companies", id }],
     }),
   }),
 });
